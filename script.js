@@ -21,22 +21,20 @@
 //     location.reload();
 // });
 
-document.addEventListener("DOMContentLoaded", (e) => {
-    console.log(e);
-    cardGenerator();
-    board();
-  });
+// document.addEventListener("DOMContentLoaded", (e) => {
+//     console.log(e);
+//     cardGenerator();
+//     board();
+//   });
   
   const section = document .querySelector("section");
   const playerLivesCount = document.querySelector("span");
-  const playerLives = 6;
+  let playerLives = 8;
   
-  //link the text
+  //link the player lives text
   playerLivesCount.textContent = playerLives;
-  
-  const cardGenerator = () => {
-    //We generate the object 🧑🏻‍💻
-    let cardData = [
+    
+    const getData = () => [
       { imgSrc: "./images/jake.png", id: 1, name: "jake" },
       { imgSrc: "./images/finn.png", id: 2, name: "finn" },
       { imgSrc: "./images/bmo.png", id: 3, name: "bmo" },
@@ -55,9 +53,15 @@ document.addEventListener("DOMContentLoaded", (e) => {
       { imgSrc: "./images/berry.png", id: 16, name: "berry" },
     ];
   
-   
+  const randomize = () => {
+    const cardData = getData();
     cardData.sort(() => Math.random() - 0.5);
-  
+    return cardData
+  }
+
+//card gen function
+const cardGenerator = () => {
+  const cardData = randomize();
     const cards = document.querySelectorAll(".card");
     cardData.forEach((item, index) => {
       const section = document.querySelector("section");
@@ -87,8 +91,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
         checkCards(e);
       });
     });
-  };
-  
+}
   const board = () => {
     // console.log("hey there!");
   };
@@ -97,4 +100,61 @@ document.addEventListener("DOMContentLoaded", (e) => {
   const checkCards = (e) => {
     const clickedCard = e.target
     clickedCard.classList.add("flipped");
+    const flippedCards = document.querySelectorAll(".flipped");
+    const toggleCard = document.querySelectorAll(".toggleCard");
+    //logic
+    if(flippedCards.length === 2) {
+      if (
+        flippedCards[0].getAttribute("name") === 
+        flippedCards[1].getAttribute("name")
+      ) {
+        console.log("match");
+        flippedCards.forEach((card) => {
+          card.classList.remove("flipped");
+          card.style.pointerEvents = "none";
+        });
+      } else {
+        console.log("wrong");
+        flippedCards.forEach((card) => {
+          card.classList.remove("flipped");
+          setTimeout(() => card.classList.remove("toggleCard"), 1000);
+        });
+        playerLives--;
+        playerLivesCount.textContent = playerLives;
+        if(playerLives === 0) {
+          restart("You lost. Try again!");
+        }
+      }
+    }
+    if(toggleCard.length === 16) {
+      restart("You won! Good job!");
+    }
+  };
+
+  //restart the game
+  const restart = () => {
+    let cardData = randomize();
+    let faces = document.querySelectorAll(".face");
+    let cards = document.querySelectorAll(".cards");
+    cardData.forEach((item, index) => {
+      // cards[index].classList.remove("toggleCard");
+      setTimeout(() => {
+        cards[index].style.pointerEvents = "all";
+      faces[index].src = item.imgSrc;
+      cards[index].setAttribute("name", item.name);
+      }, 1000);
+    });
+    playerLives = 6;
+    playerLives.textContent = playerLives;
+    setTimeout(() => window.alert("Game over! You lost!"), 100);
   }
+
+  //reset
+  function Reset() {
+    location.reload();
+}
+const button =document.querySelector("#reset")
+ button.addEventListener("click", Reset) ;
+
+
+  cardGenerator();

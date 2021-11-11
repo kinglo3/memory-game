@@ -9,7 +9,10 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,225,252,1) 100%);
+    /* background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,225,252,1) 100%); */
+    background-image: url(https://images8.alphacoders.com/418/thumb-1920-418516.jpg);
+    background-size: cover;
+    background-position: center;
     border: 20px;
 }
   
@@ -47,6 +50,36 @@
   }
 
   h1 {
+      font-family: 'Mochiy Pop One', sans-serif;
+      font-size: 30px;
       position: absolute;
       top: 5px
   }
+
+  h2 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+#reset {
+  background-color:#e60b5f;
+  color: white;
+  font-size: 2ex;
+  font-weight: bolder;
+  font-size: 20pt;
+  height:70px;
+  width: 250px;
+  border: 5px black;
+  margin: auto;
+  display: flex;
+  border-radius: 10px;
+  display: block;
+  justify-content: center;
+}
+
+.reset-container {
+  position: absolute;
+  bottom: 0;
+}
