@@ -87,7 +87,7 @@ const cardGenerator = () => {
           card.style.pointerEvents = "none";
         });
       } else {
-        console.log("wrong");
+        // console.log("wrong");
         flippedCards.forEach((card) => {
           card.classList.remove("flipped");
           setTimeout(() => card.classList.remove("toggleCard"), 1000);
@@ -100,27 +100,27 @@ const cardGenerator = () => {
       }
     }
     if(toggleCard.length === 16) {
-      restart("You won! Good job!");
+      restart();
     }
   };
 
   //restart the game
-  const restart = () => {
-    let cardData = randomize();
-    let faces = document.querySelectorAll(".face");
-    let cards = document.querySelectorAll(".cards");
-    cardData.forEach((item, index) => {
-      // cards[index].classList.remove("toggleCard");
-      setTimeout(() => {
-        cards[index].style.pointerEvents = "all";
-      faces[index].src = item.imgSrc;
-      cards[index].setAttribute("name", item.name);
-      }, 1000);
-    });
-    playerLives = 6;
-    playerLives.textContent = playerLives;
-    setTimeout(() => window.alert("Game over! You lost!"), 100);
-  }
+  // const restart = () => {
+  //   let cardData = randomize();
+  //   let faces = document.querySelectorAll(".face");
+  //   let cards = document.querySelectorAll(".cards");
+  //   cardData.forEach((item, index) => {
+  //     // cards[index].classList.remove("toggleCard");
+  //     setTimeout(() => {
+  //       cards[index].style.pointerEvents = "all";
+  //     faces[index].src = item.imgSrc;
+  //     cards[index].setAttribute("name", item.name);
+  //     }, 1000);
+  //   });
+  //   playerLives = 6;
+  //   playerLives.textContent = playerLives;
+  //   setTimeout(() => window.alert("Game over! You lost!"), 100);
+  // }
 
   //reset
   function Reset() {
