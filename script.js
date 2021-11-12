@@ -1,58 +1,31 @@
-
-
-// // Flip cards
-
-// const cards = document.querySelectorAll(".cards");
-
-// function flipCard() {
-// //   this.classList.toggle("flip");
-// console.log(this.children)
-// Array.from(this.children).forEach((elem) => {
-//     elem.classList.toggle("hidden")
-// })
-// }
-// cards.forEach((card) => card.addEventListener("click", flipCard));
-
-
-// //Reset button
-
-// const resetButton = document.querySelector("#reset");
-// resetButton.addEventListener("click", function() {
-//     location.reload();
-// });
-
-// document.addEventListener("DOMContentLoaded", (e) => {
-//     console.log(e);
-//     cardGenerator();
-//     board();
-//   });
+const section = document .querySelector("section");
+const playerLivesCount = document.querySelector("span");
+let playerLives = 6;
   
-  const section = document .querySelector("section");
-  const playerLivesCount = document.querySelector("span");
-  let playerLives = 8;
-  
-  //link the player lives text
-  playerLivesCount.textContent = playerLives;
-    
-    const getData = () => [
-      { imgSrc: "./images/jake.png", id: 1, name: "jake" },
-      { imgSrc: "./images/finn.png", id: 2, name: "finn" },
-      { imgSrc: "./images/bmo.png", id: 3, name: "bmo" },
-      { imgSrc: "./images/cupcake.png", id: 4, name: "cupcake" },
-      { imgSrc: "./images/lemongrab.png", id: 5, name: "lemongrab" },
-      { imgSrc: "./images/flame.png", id: 6, name: "flame" },
-      { imgSrc: "./images/donut.png", id: 7, name: "donut" },
-      { imgSrc: "./images/berry.png", id: 8, name: "berry" },
-      { imgSrc: "./images/jake.png", id: 9, name: "jake" },
-      { imgSrc: "./images/finn.png", id: 10, name: "finn" },
-      { imgSrc: "./images/bmo.png", id: 11, name: "bmo" },
-      { imgSrc: "./images/cupcake.png", id: 12, name: "cupcake" },
-      { imgSrc: "./images/lemongrab.png", id: 13, name: "lemongrab" },
-      { imgSrc: "./images/flame.png", id: 14, name: "flame" },
-      { imgSrc: "./images/donut.png", id: 15, name: "donut" },
-      { imgSrc: "./images/berry.png", id: 16, name: "berry" },
-    ];
-  
+//link the player lives text
+playerLivesCount.textContent = playerLives;
+
+//card images and info
+const getData = () => [
+  { imgSrc: "./images/jake.png", id: 1, name: "jake" },
+  { imgSrc: "./images/finn.png", id: 2, name: "finn" },
+  { imgSrc: "./images/bmo.png", id: 3, name: "bmo" },
+  { imgSrc: "./images/cupcake.png", id: 4, name: "cupcake" },
+  { imgSrc: "./images/lemongrab.png", id: 5, name: "lemongrab" },
+  { imgSrc: "./images/flame.png", id: 6, name: "flame" },
+  { imgSrc: "./images/donut.png", id: 7, name: "donut" },
+  { imgSrc: "./images/berry.png", id: 8, name: "berry" },
+  { imgSrc: "./images/jake.png", id: 9, name: "jake" },
+  { imgSrc: "./images/finn.png", id: 10, name: "finn" },
+  { imgSrc: "./images/bmo.png", id: 11, name: "bmo" },
+  { imgSrc: "./images/cupcake.png", id: 12, name: "cupcake" },
+  { imgSrc: "./images/lemongrab.png", id: 13, name: "lemongrab" },
+  { imgSrc: "./images/flame.png", id: 14, name: "flame" },
+  { imgSrc: "./images/donut.png", id: 15, name: "donut" },
+  { imgSrc: "./images/berry.png", id: 16, name: "berry" },
+];
+
+  //randomize the cards
   const randomize = () => {
     const cardData = getData();
     cardData.sort(() => Math.random() - 0.5);
