@@ -81,7 +81,7 @@ const cardGenerator = () => {
         flippedCards[0].getAttribute("name") === 
         flippedCards[1].getAttribute("name")
       ) {
-        console.log("match");
+        // console.log("match");
         flippedCards.forEach((card) => {
           card.classList.remove("flipped");
           card.style.pointerEvents = "none";
@@ -95,12 +95,12 @@ const cardGenerator = () => {
         playerLives--;
         playerLivesCount.textContent = playerLives;
         if(playerLives === 0) {
-          restart("You lost. Try again!");
+          alert("You lost. Try again!");
         }
       }
     }
     if(toggleCard.length === 16) {
-      restart();
+      restart("WINNER!!!");
     }
   };
 
